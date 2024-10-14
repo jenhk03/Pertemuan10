@@ -2,7 +2,7 @@ fun main()
 {
     var mulLambda: (Int, Int) -> Int
     mulLambda = {
-        a: Int, b: Int -> Int
+            a: Int, b: Int -> Int
         a * b
     }
     val lambdaResult = mulLambda(4, 2)
@@ -66,4 +66,42 @@ fun main()
     println(counter1)
     println(counter1)
     println(counter2)
+    val names = arrayOf("ZZZZZZ", "BB", "A", "CCCC", "EEEEE")
+    println(names.sorted())
+    val namesByLength = names.sortedWith(compareBy {
+        -it.length
+    })
+    println(namesByLength)
+    val values = listOf(1, 2, 3, 4, 5, 6)
+    values.forEach {
+        println("$it: ${it * it}")
+    }
+    var prices = listOf(1.5, 10.0, 4.99, 2.30, 8.19)
+    val largePrices = prices.filter {
+        it > 5.0
+    }
+    println(largePrices)
+    val userInput = listOf("0", "11", "haha", "42")
+    val numbers = userInput.map {
+        it.toIntOrNull()
+    }
+    println(numbers)
+    val numbers2 = userInput.mapNotNull {
+        it.toIntOrNull()
+    }
+    println(numbers2)
+    var sum = prices.fold(0.0) { a, b ->
+        a + b
+    }
+    println(sum)
+    sum = prices.reduce { a, b ->
+        a + b
+    }
+    println(sum)
+    val stock = mapOf(1500 to 5, 10000 to 2, 4990 to 20, 2300 to 5, 8190 to 30)
+    var stockSum = 0
+    stock.forEach {
+        stockSum += it.key * it.value
+    }
+    println(stockSum)
 }
